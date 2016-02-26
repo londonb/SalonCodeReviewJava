@@ -5,7 +5,7 @@
 ##### Brad London
 
 ## Description
-This is an application for best Restaurants that list different cuisines.
+This is an application will allow a user at a hair salon to keep track of which clients have which stylist within a database.
 
 ## Setup
 
@@ -13,7 +13,7 @@ Clone this repository:
 ```
 $ cd ~/Desktop
 $ git clone https://github.com/LINK_TO_YOUR_REPO
-$ cd best-restaurants
+$ cd salon
 ```
 
 Open terminal and run Postgres:
@@ -21,18 +21,22 @@ Open terminal and run Postgres:
 $ postgres
 ```
 
-Open a new tab in terminal and create the `best-restaurants` database:
+Open a new tab in terminal and create the `hair_salon` database:
 ```
 $ psql
-# CREATE DATABASE best_restaurants;
-$ psql best_restaurants < best_restaurants.sql
+# CREATE DATABASE hair_salon;
+$ psql hair_salon < hair_salon.sql
 ```
 
 Navigate back to the directory where this repository has been cloned and run gradle:
 ```
 $ gradle run
 ```
+Open your web browser of choice to localhost:4567
 
+## Technologies Used
+
+Java, Spark, Junit, Velocity, Fluentlenium, Bootstrap, SQL
 ## Legal
 
 Copyright (c) 2016 Author Brad London
