@@ -3,9 +3,9 @@ import java.util.List;
 import java.util.*;
 
 public class Stylist {
-  private String stylist_name;
   private int id;
-
+  private String stylist_name;
+  
   public Stylist(String stylist_name) {
     this.stylist_name = stylist_name;
   }
