@@ -35,4 +35,12 @@ public class ClientTest {
     Client savedClient = Client.find(newClient.getId());
     assertEquals(savedClient.getClientName(), "Brad");
   }
+
+  @Test
+  public void update_updatesClientNameInDatabase() {
+    Client newClient = new Client ("Bradd", 1);
+    newClient.save();
+    newClient.update("Brad");
+    assertEquals(newClient.getClientName(), "Brad");
+  }
 }
