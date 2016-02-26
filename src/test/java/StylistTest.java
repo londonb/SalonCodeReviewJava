@@ -35,4 +35,12 @@ public class StylistTest {
     Stylist savedStylist = Stylist.find(newStylist.getId());
     assertEquals(savedStylist.getStylistName(), "Brad");
   }
+
+  @Test
+  public void update_updateStylistInDatabase() {
+    Stylist myStylist = new Stylist ("Bradd");
+    myStylist.save();
+    myStylist.update("Brad");
+    assertEquals(myStylist.getStylistName(), "Brad");
+  }
 }
