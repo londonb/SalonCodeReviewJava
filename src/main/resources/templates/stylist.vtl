@@ -1,0 +1,11 @@
+<h3>$stylist.getStylistName()</h3>
+
+
+<p>Current clients for this customer:</p>
+#foreach($client in $clients)
+  <p>$client.getClientName()</p>
+
+#end
+
+
+<a href ="/" class="btn btn-success">Go Home</a>

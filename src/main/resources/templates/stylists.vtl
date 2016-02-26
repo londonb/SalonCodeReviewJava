@@ -1,0 +1,7 @@
+<h1>All Stylists at the Salon:</h1>
+
+#foreach($stylist in $stylists)
+<h3><a href="/stylists/$stylist.getId()">$stylist.getStylistName()</a></h3>
+#end
+
+<a href="/" class="btn btn-primary">Go Home</a>

@@ -1,0 +1,42 @@
+<h1>Brad's Hair Salon</h1>
+
+<h3>Add a new stylist:</h3>
+
+<form action="/stylists" method="post">
+  <div class="form-group">
+    <label for="stylistName">Name of new Stylist</label>
+    <input id="stylistName" name="stylistName" type="text" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-success" id="submitStylist">Add stylist</button>
+</form>
+
+<a href="/stylist">View all stylists</a>
+
+#if($stylists.size() > 0)
+<br>
+<br>
+<h3> Add a client:</h3>
+
+<form action="/clients" method="post">
+  <div class="form-group">
+    <label for="stylistId">Select a stylist</label>
+    <select id="stylistId" name="stylistIsCreated" type="text">
+    #foreach($stylist in $stylists)
+    <option value="$stylist.getId()">$stylist.getStylistName()</option>
+  #end
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="clientName">Name</label>
+  <input id="clientName" name="clientName" type="text" class="form-control">
+</div>
+<button type="submit" class="btn btn-success">Add client</button>
+</form>
+#end
+
+<h2>List of all stylists:</h2>
+#foreach($stylist in $stylists)
+<h3><a href="/stylists/$stylists.getId()">$stylist.getStylistName()</a></h3>
+
+#end
