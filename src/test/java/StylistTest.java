@@ -20,4 +20,11 @@ public class StylistTest {
     Stylist stylist2 = new Stylist ("Brad");
     assertTrue(stylist1.equals(stylist2));
   }
+
+  @Test
+  public void save_savesStylistToDatabase() {
+    Stylist newStylist = new Stylist ("Brad");
+    newStylist.save();
+    assertTrue(Stylist.all().get(0).equals(newStylist));
+  }
 }
