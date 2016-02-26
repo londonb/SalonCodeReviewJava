@@ -68,7 +68,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/restaurants/:id" , (request, response) -> {
+    get("/clients/:id" , (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int id =Integer.parseInt(request.params(":id"));
       Client client = Client.find(Integer.parseInt(request.params(":id")));
@@ -78,7 +78,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/restaurants/:id/updated", (request, response) -> {
+    post("/clients/:id/updated", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Client client = Client.find(Integer.parseInt(request.params(":id")));
       String newName = request.queryParams("update");
@@ -88,7 +88,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/restaurants/:id/deleted", (request, reponse) -> {
+    post("/clients/:id/deleted", (request, reponse) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Client client = Client.find(Integer.parseInt(request.params(":id")));
       client.delete();

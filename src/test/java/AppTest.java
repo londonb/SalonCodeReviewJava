@@ -45,9 +45,19 @@ public class AppTest extends FluentTest {
     client1.save();
     Client client2 = new Client("Astro", myStylist.getId());
     client2.save();
-    String categoryPath = String.format("http://localhost:4567/clients");
-    goTo(categoryPath);
+    String clientPath = String.format("http://localhost:4567/clients");
+    goTo(clientPath);
     assertThat(pageSource()).contains("CatBot");
+    assertThat(pageSource()).contains("Astro");
+  }
+
+  @Test
+  public void find_clientHasAPageForThemself() {
+    Client newClient = new Client("Astro", 1);
+    newClient.save();
+    Client savedClient = Client.find(newClient.getId());
+    String clientPath = String.format("http://localhost:4567/clients/%d", newClient.getId());
+    goTo (clientPath);
     assertThat(pageSource()).contains("Astro");
   }
 
@@ -56,8 +66,8 @@ public class AppTest extends FluentTest {
     Client newClient = new Client("RoboCat", 1);
     newClient.save();
     newClient.update("RoboKitty");
-    String categoryPath = String.format("http://localhost:4567/clients", newClient.getId());
-    goTo(categoryPath);
+    String clientPath = String.format("http://localhost:4567/clients", newClient.getId());
+    goTo(clientPath);
     assertThat(pageSource()).contains("RoboKitty");
   }
 
@@ -66,8 +76,10 @@ public class AppTest extends FluentTest {
     Client myClient = new Client ("RoboKitty", 1);
     myClient.save();
     myClient.delete();
-    String categoryPath = String.format("http://localhost:4567/clients");
-    goTo(categoryPath);
+    String clientPath = String.format("http://localhost:4567/clients");
+    goTo(clientPath);
     assertThat(pageSource()).doesNotContain("RoboKitty");
   }
+
+
 }
