@@ -32,7 +32,8 @@ public class Stylist {
   public static List<Stylist> all() {
     String sql = "SELECT * FROM stylists";
       try (Connection con = DB.sql2o.open()) {
-        return con.createQuery(sql).executeAndFetch(Stylist.class);
+        return con.createQuery(sql)
+        .executeAndFetch(Stylist.class);
       }
   }
 
@@ -43,6 +44,15 @@ public class Stylist {
         .addParameter("stylist_name", stylist_name)
         .executeUpdate()
         .getKey();
+      }
+  }
+
+  public static Stylist find(int id) {
+    String sql = "SELECT * FROM stylists WHERE id =:id";
+      try(Connection con = DB.sql2o.open()) {
+        return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Stylist.class);
       }
   }
 
