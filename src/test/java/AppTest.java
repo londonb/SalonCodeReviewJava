@@ -59,5 +59,15 @@ public class AppTest extends FluentTest {
     String categoryPath = String.format("http://localhost:4567/clients", newClient.getId());
     goTo(categoryPath);
     assertThat(pageSource()).contains("RoboKitty");
-}
+  }
+
+  @Test
+  public void delete_deletesClientsFromDatabase() {
+    Client myClient = new Client ("RoboKitty", 1);
+    myClient.save();
+    myClient.delete();
+    String categoryPath = String.format("http://localhost:4567/clients");
+    goTo(categoryPath);
+    assertThat(pageSource()).doesNotContain("RoboKitty");
+  }
 }
