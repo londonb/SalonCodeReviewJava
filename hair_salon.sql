@@ -115,6 +115,10 @@ ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq':
 --
 
 COPY clients (id, client_name, stylist_id) FROM stdin;
+2	CatBot	1
+4	RoboKitty	2
+5	Astro	1
+6	Finn	2
 \.
 
 
@@ -130,6 +134,8 @@ SELECT pg_catalog.setval('clients_id_seq', 1, false);
 --
 
 COPY stylists (id, stylist_name) FROM stdin;
+1	Brad London
+2	Matt Wickstrom
 \.
 
 
