@@ -5,7 +5,7 @@ import java.util.*;
 public class Stylist {
   private int id;
   private String stylist_name;
-  
+
   public Stylist(String stylist_name) {
     this.stylist_name = stylist_name;
   }
@@ -76,4 +76,12 @@ public class Stylist {
     }
   }
 
+  public List<Client> viewClients() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE stylist_id=:id";
+      return con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetch(Client.class);
+    }
+  }
 }
