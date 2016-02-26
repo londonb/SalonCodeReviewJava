@@ -50,4 +50,14 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("CatBot");
     assertThat(pageSource()).contains("Astro");
   }
+
+  @Test
+  public void update_updatesClientInDatabased() {
+    Client newClient = new Client("RoboCat", 1);
+    newClient.save();
+    newClient.update("RoboKitty");
+    String categoryPath = String.format("http://localhost:4567/clients", newClient.getId());
+    goTo(categoryPath);
+    assertThat(pageSource()).contains("RoboKitty");
+}
 }
