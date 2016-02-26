@@ -20,4 +20,11 @@ public class ClientTest {
     Client client2 = new Client ("Brad", 1);
     assertTrue(client1.equals(client2));
   }
+
+  @Test
+  public void save_savesClientsToDatabase() {
+    Client newClient = new Client("Brad", 1);
+    newClient.save();
+    assertTrue(Client.all().get(0).equals(newClient));
+  }
 }
